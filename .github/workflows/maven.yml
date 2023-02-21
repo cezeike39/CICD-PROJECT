@@ -44,7 +44,7 @@ jobs:
       uses: medyagh/setup-minikube@master
     
     - name: Deploy to minikube
-      run:
+      run: |
         kubectl apply -f Todo-app.yml
         kubectl get all
         kubectl get ep
