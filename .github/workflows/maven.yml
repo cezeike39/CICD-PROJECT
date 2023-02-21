@@ -40,16 +40,30 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     
-    - name: create kubeconfig
+    - name: Install and Start Minikube
+      uses: medyagh/setup-minikube@master
+    
+    - name: Deploy to minikube
+      run:
+        kubectl apply -f Todo-app.yml
+        
+    - name: Test service URLs
       run: |
-        mkdir ${HOME}/.kube
-        echo "${{ secrets.KUBE_CONFIG }}" > ${HOME}/.kube/config
-        cat ${HOME}/.kube/config
+        minikube service list
+        minikube service example --url
+        echo "------------------opening the service------------------"
+        curl $(minikube service example --url)  
+    
+#     - name: create kubeconfig
+#       run: |
+#         mkdir ${HOME}/.kube
+#         echo "${{ secrets.KUBE_CONFIG }}" > ${HOME}/.kube/config
+#         cat ${HOME}/.kube/config
 
-    - name: use use-context
-      run: kubectl config use-context docker-desktop
+#     - name: use use-context
+#       run: kubectl config use-context docker-desktop
 
-    - name: Deploy to K8s
-      run: kubectl apply -f k8s
+#     - name: Deploy to K8s
+#       run: kubectl apply -f k8s
       
  
