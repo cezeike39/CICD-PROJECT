@@ -46,13 +46,15 @@ jobs:
     - name: Deploy to minikube
       run:
         kubectl apply -f Todo-app.yml
+        kubectl get all
+        kubectl get ep
         
     - name: Test service URLs
       run: |
         minikube service list
         minikube service todo-svc --url
-        echo "------------------opening the service------------------"
-        curl $(minikube service todo-svc --url)  
+        # echo "------------------opening the service------------------"
+        # curl $(minikube service todo-svc --url) 
     
     # - name: create kubeconfig
     #   run: |
