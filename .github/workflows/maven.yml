@@ -45,7 +45,6 @@ jobs:
       run: |
         mkdir ${HOME}/.kube
         echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
-        cat ${HOME}/.kube/config
         kubectl config use-context docker-desktop
         kubectl apply -f k8/
       
