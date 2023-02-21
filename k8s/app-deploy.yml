@@ -1,48 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-app
+  name: task-app-dep
 spec:
   selector:
     matchLabels:
-      app: todo-app
+      app: FE
   template:
     metadata:
+      name: task-app-pod
       labels:
-        app: todo-app
+        app: FE
     spec:
       containers:
-      - name: todo-app
-        image: oladayur/registration:v3
+      - name: task-app-cont
+        image: oladayur/devop-tasks:v1
         ports:
         - containerPort: 8080
         envFrom:
         - secretRef:
             name: app-sec
 
----
-apiVersion: v1
-data:
-  MONGO_DB_HOSTNAME: bW9uZ28tc3Zj
-  MONGO_DB_PASSWORD: YWRtaW5AMTIz
-  MONGO_DB_USERNAME: YWRtaW4=
-kind: Secret
-metadata:
-  creationTimestamp: null
-  name: app-sec
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: todo-svc
-spec:
-  type: NodePort
-  selector:
-    app: todo-app
-  ports:
-  - port: 8080
-    targetPort: 8080
-    nodePort: 30023
 
 ---
 apiVersion: apps/v1
@@ -75,15 +53,3 @@ spec:
           envFrom:
           - secretRef:
               name: mongo-sec
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mongo-svc
-spec:
-  selector:
-    app: mongodb
-  ports:
-  - port: 27017
-    targetPort: 27017
