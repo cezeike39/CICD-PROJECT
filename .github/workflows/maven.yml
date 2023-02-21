@@ -65,5 +65,16 @@ jobs:
 
     # - name: Deploy to K8s
     #   run: kubectl apply -f k8s
+#     - name: create kubeconfig
+#       run: |
+#         mkdir ${HOME}/.kube
+#         echo "${{ secrets.KUBE_CONFIG }}" > ${HOME}/.kube/config
+#         cat ${HOME}/.kube/config
+
+#     - name: use use-context
+#       run: kubectl config use-context docker-desktop
+
+#     - name: Deploy to K8s
+#       run: kubectl apply -f k8s
       
  
