@@ -50,7 +50,7 @@ jobs:
     - name: Test service URLs
       run: |
         minikube service list
-        minikube service example --url
+        minikube service todo-svc --url
         echo "------------------opening the service------------------"
         curl $(minikube service todo-svc --url)  
     
