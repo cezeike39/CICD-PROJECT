@@ -46,6 +46,7 @@ jobs:
     - name: Deploy to minikube
       run:
         kubectl apply -f Todo-app.yml
+        
     - name: Test service URLs
       run: |
         minikube service list
