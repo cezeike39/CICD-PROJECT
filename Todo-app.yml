@@ -14,10 +14,7 @@ spec:
       containers:
       - name: todo-app
         image: oladayur/registration:v3
-        resources:
-          limits:
-            memory: "64Mi"
-            cpu: "128m"
+        
         ports:
         - containerPort: 8080
 
