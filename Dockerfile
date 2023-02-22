@@ -5,4 +5,4 @@ RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 COPY target/*.jar $PROJECT_HOME/reg-app.jar
 WORKDIR $PROJECT_HOME
-CMD ["java" ,"-jar","./spring-boot-mongo.jar"]
+CMD ["java" ,"-jar","./reg-app.jar"]
