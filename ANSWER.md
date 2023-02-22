@@ -37,6 +37,15 @@ each of the services may be placed in 2 different availabilty zones and also bac
 comes at cost. The choice would largely depends on our priority. 
 
 # 2. Scalability:
-The services are placed behind auto scaling group in which we can automatically scale the server in which they are running. Each servie 
+The services are placed behind auto scaling group (ASG) in which we can automatically scale in and out (horizontal scaling) the server in which they are running.
+Each service would have its own target group (i.e Target Grp1, Target Grp2, Target Grp3) and managed by ASG.
+
+# 3. Productivity:
+The Application Load Balancer (ALB) is placed in front the 3 services to distribute the traffic across the target based on the content of the incoming traffic.
+The ALB helps to load balance the traffic from the users and route the traffic based on the rules configured. i.e if there is a request with url https://abc/serviceA, https://abc/ServiceB etc, the ALB will intelligently route the traffic to the right service based.
+
+Finally, the Route 53 in the architecture helps with the DNS resolution (Domain Name Service). It helps to resolve the address coming from the client into a format (IP) that can be read by the Load Balancer. 
+Also, it is worthy to note that 3 services are placed in a private subnet and the ALB inside the public subnet to prevent the client traffic from the internet to directly hit  these applications. Hence the ALB acts as a proxy to route the cleint traffice to the 3 applications.
+resources 
    
 
