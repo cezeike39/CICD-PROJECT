@@ -12,9 +12,11 @@ spec:
       labels:
         app: FE
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
       - name: task-app-cont
-        image: oladayur/devop-tasks:v1
+        image: oladayur/devops-task:v3
         ports:
         - containerPort: 8080
         envFrom:

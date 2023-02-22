@@ -20,18 +20,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-#     - name: Set up JDK 11
-#       uses: actions/setup-java@v3
-#       with:
-#         java-version: '11'
-#         distribution: 'temurin'
-#         cache: maven
         
     - name: Build with Maven
       run: mvn clean install
 
     - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build & push Docker image
+      name: Build & Push Docker Image
       with:
         image: oladayur/registration
         tags: v3
@@ -39,39 +33,11 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    
-#     - name: Install and Start Minikube
-#       uses: medyagh/setup-minikube@master
-    
-#     - name: sleep for 60 seconds
-#       run: sleep 60
-      
-#     - name: Deploy to minikube
-#       run: |
-#         kubectl apply -f k8s/
-#         kubectl get all
-#         kubectl get ep
-        
-#     - name: Test service URLs
-#       run: |
-#         minikube service list
-#         minikube service taskapp-svc --url
-#         # echo "------------------opening the service------------------"
-#         # curl $(minikube service task-svc --url) 
-    
-#     - name: create kubeconfig
-#       run: |
-#         mkdir ${HOME}/.kube
-#         echo "${{ secrets.KUBE_CONFIG }}" > ${HOME}/.kube/config
-#         cat ${HOME}/.kube/config
 
-    - name: use use-context
-      run: kubectl config use-context docker-desktop
-
-    - name: Deploy to K8s
+    - name: Deploy to K8s Cluster
       run: kubectl apply -f k8s
     
-    - name: get objects
+    - name: Get Running Objects
       run: kubectl get all
   
 
