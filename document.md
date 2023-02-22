@@ -5,7 +5,9 @@ The project consists of 2 services (micro-service): Reg-app and Mongodb. We will
 for deployment and use docker engine to build an image which can be run as a container inside K8s cluster. The mongodb official image from the dockerhub
 registry will be deployed as a container inside the cluster and help us to store the data from the application.
 We will use GitHub Actions which will help us to automate the processes involve to achieve Continuous Integration and Continous Deployment (CICD).
-We will write and use manifest (yaml file) which contains all the stages involved in CICD process with GitHub Action for this project 
+GitHub Action uses manifest file to automate the CICD process. and it is also included in this file.
+
+
 
 Prerequisites
 Before you begin, make sure you have the following software installed:
