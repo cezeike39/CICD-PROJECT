@@ -24,5 +24,19 @@ In this stage, the artifactory is integrated with the automation tools where the
 
 The above stages (1 to 4 ) is what is called continuous integration which is aimed at continuously testing our code for bug issues and hence we can detect this earlier.
 
+# stage 5: Testing in UAT enviroment
+In this stage, after the completion of continuous integration processes, further test is required to check for the application performance, integration, regression, 
+load balance and etc. which is usually done at in staging/UAT environment before it is taking to production. If the processes are manaully done whereby a manual approval is required, it is termed a continuous delivery otherwise it is termed continuous deployment.
 
+# stage 6: Deployment Stage
+This is final stage of the CICD process and after these applications have been deploying into the application server. 
+Here to achieve high  availability, and sacalability for each of the 3 services (A, B and C). The below design will be considered.
+
+# 1. Availability:
+each of the services may be placed in 2 different availabilty zones and also backup them up in another region. This however 
+comes at cost. The choice would largely depends on our priority. 
+
+# 2. Scalability:
+The services are placed behind auto scaling group in which we can automatically scale the server in which they are running. Each servie 
+   
 
