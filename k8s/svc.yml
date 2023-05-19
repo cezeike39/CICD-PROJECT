@@ -15,7 +15,7 @@ kind: Service
 metadata:
   name: reg-app-svc
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: FE
   ports:
