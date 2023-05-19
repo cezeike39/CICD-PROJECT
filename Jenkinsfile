@@ -45,6 +45,7 @@ pipeline{
         }
         stage('DEPLOY-TO-K8S'){
             steps{
+                // sh 'echo testing'
                 withCredentials([file(credentialsId: 'K8S-CRED', variable: 'K8S-CRED')]) {
                 sh 'kubectl --kubeconfig=${K8S-CRED} apply -f k8s/'
         }
