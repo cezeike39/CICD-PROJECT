@@ -16,7 +16,7 @@ spec:
         - name: regcred
       containers:
       - name: reg-app-cont
-        image: oladayur/cicd-demo:v2
+        image: oladayur/cicd-demo2:v2
         ports:
         - containerPort: 8080
         envFrom:
