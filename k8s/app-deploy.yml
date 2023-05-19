@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: task-app-dep
+  name: reg-app
 spec:
   selector:
     matchLabels:
@@ -16,7 +16,7 @@ spec:
         - name: regcred
       containers:
       - name: task-app-cont
-        image: oladayur/devops-task:v3
+        image: oladayur/cicd-demo:v2
         ports:
         - containerPort: 8080
         envFrom:
@@ -42,8 +42,10 @@ spec:
     spec:
       volumes:
         - name: mongo-vol
-          hostPath: 
-            path: /tmp/mongo
+          persistentVolumeClaim:
+             claimName: db-pvc
+          #hostPath: 
+           # path: /tmp/mongo
       containers:
         - name: mongodb-con
           image: mongo
