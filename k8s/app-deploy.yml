@@ -8,14 +8,14 @@ spec:
       app: FE
   template:
     metadata:
-      name: task-app-pod
+      name: reg-app-pod
       labels:
         app: FE
     spec:
       imagePullSecrets:
         - name: regcred
       containers:
-      - name: task-app-cont
+      - name: reg-app-cont
         image: oladayur/cicd-demo:v2
         ports:
         - containerPort: 8080
