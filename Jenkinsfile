@@ -17,6 +17,7 @@ pipeline{
             steps{
                 sh "echo 'testing and building artifact with maven'"
                 sh "mvn install"
+                // sh echo done
             }
         }
         stage('SAST'){
