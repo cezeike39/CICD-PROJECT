@@ -13,9 +13,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: taskapp-svc
+  name: reg-app-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: FE
   ports:
