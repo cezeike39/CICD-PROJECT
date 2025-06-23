@@ -19,10 +19,10 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Build WAR file
+    - name: Build JAR file
       run: mvn clean package
 
-    - name: Copy WAR file to build-artifacts folder
+    - name: Copy JAR file to build-artifacts folder
       run: |
         mkdir -p build-artifacts
         cp target/*.jar build-artifacts/
