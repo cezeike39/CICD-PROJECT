@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build WAR file
-      run: mvn clean package
+      run: mvn clean install
 
  
 
