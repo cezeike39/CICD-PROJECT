@@ -20,7 +20,20 @@ jobs:
         distribution: 'temurin'
 
     - name: Build WAR file
-      run: mvn clean install
+      run: mvn clean package
+
+    - name: Copy WAR file to build-artifacts folder
+      run: |
+        mkdir -p build-artifacts
+        cp target/*.war build-artifacts/
+
+    - name: Commit and push WAR file
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "github-actions[bot]"
+        git add build-artifacts/
+        git commit -m "Add built WAR file from workflow run"
+        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }} HEAD:main
 
  
 
