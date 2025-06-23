@@ -25,7 +25,7 @@ jobs:
     - name: Copy WAR file to build-artifacts folder
       run: |
         mkdir -p build-artifacts
-        cp target/*.war build-artifacts/
+        cp target/*.jar build-artifacts/
 
     - name: Commit and push WAR file
       run: |
