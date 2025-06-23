@@ -1,32 +1,30 @@
 # This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+name: Build and Upload WAR
 
 on:
   push:
     branches: [main]
-  release:
-    types: [created]
-
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 11
+
+    - name: Set up Java
       uses: actions/setup-java@v4
       with:
         java-version: '11'
         distribution: 'temurin'
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
+    - name: Build WAR file
       run: mvn clean package
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+    - name: Upload WAR file as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-war-file
+        path: target/*.war
+
