@@ -20,11 +20,11 @@ jobs:
     - name: Build JAR file
       run: mvn clean package
 
-    - name: Upload JAR file as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: my-jar-file
-        path: target/*.jar
+#    - name: Upload JAR file as artifact
+#      uses: actions/upload-artifact@v4
+#      with:
+#        name: my-jar-file
+#        path: target/*.jar
 
   docker:
     runs-on: self-hosted
