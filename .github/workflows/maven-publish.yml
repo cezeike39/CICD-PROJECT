@@ -2,9 +2,9 @@
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
 name: Build and Upload WAR
 
-on:
-  push:
-    branches: [main]
+#on:
+ # push:
+  #  branches: [main]
 
 jobs:
   build:
