@@ -4,8 +4,8 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 
-COPY my-jar-file /app/your-application.jar
+COPY my-jar-file /app/my-jar-file
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "your-application.jar"]
+CMD ["java", "-jar", "my-jar-file"]
