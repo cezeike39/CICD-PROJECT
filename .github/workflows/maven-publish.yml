@@ -1,10 +1,8 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-name: Build and Upload WAR
+name: Build and Upload WAR and Push Docker
 
-#on:
- # push:
-  #  branches: [main]
+on:
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -22,52 +20,41 @@ jobs:
     - name: Build JAR file
       run: mvn clean package
 
-    - name: Copy JAR file to build-artifacts folder
-      run: |
-        mkdir -p build-artifacts
-        cp target/*.jar build-artifacts/
-
     - name: Upload JAR file as artifact
       uses: actions/upload-artifact@v4
       with:
         name: my-jar-file
         path: target/*.jar
 
-#   - name: Commit and push WAR file
-#      run: |
-#       git config --global user.email "actions@github.com"
-#        git config --global user.name "github-actions[bot]"
-#        git add build-artifacts/
-#        git commit -m "Add built WAR file from workflow run"
-#        git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }} HEAD:main
-
-name: Docker_build
-
-on:
-  push:
-
-jobs:
   docker:
     runs-on: self-hosted
-    needs: Build and Upload WAR
+    needs: build
+
     steps:
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      -
-        name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          tags: cezeike39/docker:cicd-app
+    - name: Download JAR artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: my-jar-file
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ vars.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: cezeike39/docker:cicd-app
+
  
 
