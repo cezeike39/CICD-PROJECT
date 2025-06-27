@@ -55,6 +55,17 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: cezeike39/docker:cicd-app
+  Sonarqube:
+    runs-on: self-hosted
+    needs: build
+
+    steps:
+    - name: Build and Analyze
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: mvn sonar:sonar
+
 
 
 
