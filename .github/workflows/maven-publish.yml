@@ -70,14 +70,14 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
-     - name: Upload artifact to Nexus
-       uses: sonatype-nexus-community/nexus-repository-action@main
-       with:
-         nexus_url: http://13.58.7.12:8081/
-         username: ${{ secrets.NEXUS_USERNAME }}
-         password: ${{ secrets.NEXUS_PASSWORD }}
-         repository: http://13.58.7.12:8081/repository/maven-releases/
-         artifact_path: target/my-app.jar
+      - name: Upload to Nexus
+        run: |
+          ARTIFACT=target/my-app-1.0.0.jar
+          REPO_PATH=com/mycompany/my-app/1.0.0/my-app-1.0.0.jar
+
+          curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" \
+               --upload-file "$ARTIFACT" \
+               "http://13.58.7.12:8081/repository/maven-releases/$REPO_PATH"
 
       
 
