@@ -65,7 +65,31 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
       run: mvn sonar:sonar
+      
+  nexus:
+    runs-on: self-hosted
+    steps:
+      - name: Configure .netrc
+        run: |
+          cat <<EOF > $HOME/.netrc
+          machine your-nexus-server
+          login ${{ secrets.NEXUS_USERNAME }}
+          password ${{ secrets.NEXUS_PASSWORD }}
+          EOF
+        env:
+          NEXUS_SERVER: http://13.58.7.12:8081/
+          NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+          NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
 
+      - name: Upload artifacts
+        uses: lfit/nexus-upload-action@v1
+        with:
+          nexus_url: http://13.58.7.12:8081/
+          repository: http://13.58.7.12:8081/repository/maven-releases/
+          folder: './target' # Replace with the folder containing your artifacts
+          username: ${{ secrets.NEXUS_USERNAME }}
+          password: ${{ secrets.NEXUS_PASSWORD }}
+      
 
 
 
