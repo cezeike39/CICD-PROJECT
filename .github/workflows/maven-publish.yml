@@ -68,6 +68,7 @@ jobs:
       
   nexus:
     runs-on: self-hosted
+    needs: build
     steps:
       - name: Configure .netrc
         run: |
