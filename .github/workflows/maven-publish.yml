@@ -72,8 +72,8 @@ jobs:
     steps:
       - name: Upload to Nexus
         run: |
-          ARTIFACT=target/my-app-1.0.0.jar
-          REPO_PATH=com/mycompany/my-app/1.0.0/my-app-1.0.0.jar
+          ARTIFACT=target/my-jar-file
+          REPO_PATH=com/mycompany/my-app/1.0.0/my-jar-file
 
           curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" \
                --upload-file "$ARTIFACT" \
