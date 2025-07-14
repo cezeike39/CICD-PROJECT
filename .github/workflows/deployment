@@ -19,4 +19,3 @@ jobs:
         kubectl apply -f k8s/cicd-secret.yaml
         kubectl apply -f k8s/mongo-cicd.yaml
         kubectl apply -f k8s/cicd-deploy.yaml
----
