@@ -79,6 +79,22 @@ jobs:
                --upload-file "$ARTIFACT" \
                "http://13.58.7.12:8081/repository/maven-releases/$REPO_PATH"
 
+
+  deploy:
+    runs-on: self-hosted
+
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s/cicd-cm.yaml
+        kubectl apply -f k8s/cicd-secret.yaml
+        kubectl apply -f k8s/mongo-cicd.yaml
+        kubectl apply -f k8s/cicd-deploy.yaml
+
       
 
 
