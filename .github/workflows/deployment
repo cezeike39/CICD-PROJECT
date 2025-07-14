@@ -8,19 +8,14 @@ jobs:
   deploy:
     runs-on: self-hosted
 
-    env:
-      KOPS_CLUSTER_NAME: your-cluster-name.k8s.local
-      KOPS_STATE_STORE: s3://your-kops-state-store
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Export kubeconfig from Kops
-      run: |
-        kops export kubeconfig --name $KOPS_CLUSTER_NAME --state $KOPS_STATE_STORE --admin
-
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f k8s/deployment.yaml
-        kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/cicd-cm.yaml
+        kubectl apply -f k8s/cicd-secret.yaml
+        kubectl apply -f k8s/mongo-cicd.yaml
+        kubectl apply -f k8s/cicd-deploy.yaml
