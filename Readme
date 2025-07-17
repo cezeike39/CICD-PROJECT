@@ -14,11 +14,11 @@ The project builds a `.jar` file using Maven and automates the process through b
 The pipeline handles:
 
 - ✅ Code compilation and build
-- ✅ Code quality analysis via **SonarQube**
+- ✅ Code quality analysis via **SonarQube**...
 - ✅ Artifact storage via **Nexus**
 - ✅ Docker image creation and push to **Docker Hub**
 - ✅ Kubernetes deployment using **Kops**
-- ✅ Exposure via a **LoadBalancer Service**
+- ✅ Exposure via a **LoadBalancer Service**...
 
 ---
 
