@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cicd-app
-  namespace: cicd-project  
+  namespace: cicd-project
   labels:
     app: cicd
 spec:
@@ -23,7 +23,6 @@ spec:
             name: myconfigmap
         - secretRef:
             name: my-secret
-
 ---
 apiVersion: v1
 kind: Service
@@ -31,10 +30,10 @@ metadata:
   name: my-service
   namespace: cicd-project
 spec:
+  type: LoadBalancer
   selector:
     app: cicd
   ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: LoadBalancer
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP

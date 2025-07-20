@@ -1,0 +1,863 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Namespace","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T14:32:41Z","labels":{"app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","kubernetes.io/metadata.name":"ingress-nginx"},"name":"ingress-nginx","resourceVersion":"631011","uid":"4c136ce7-bb30-4732-b731-ae8c0558b69b"},"spec":{"finalizers":["kubernetes"]},"status":{"phase":"Active"}}
+    creationTimestamp: "2025-07-20T14:32:41Z"
+    labels:
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      kubernetes.io/metadata.name: ingress-nginx
+    name: ingress-nginx
+    resourceVersion: "631937"
+    uid: 4c136ce7-bb30-4732-b731-ae8c0558b69b
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  automountServiceAccountToken: true
+  kind: ServiceAccount
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","automountServiceAccountToken":true,"kind":"ServiceAccount","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:52Z","labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx","namespace":"ingress-nginx","resourceVersion":"617193","uid":"c9a5f662-6096-4427-b6e7-336634d4f6ce"}}
+    creationTimestamp: "2025-07-20T15:23:52Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx
+    namespace: ingress-nginx
+    resourceVersion: "631013"
+    uid: c9a5f662-6096-4427-b6e7-336634d4f6ce
+- apiVersion: v1
+  automountServiceAccountToken: true
+  kind: ServiceAccount
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","automountServiceAccountToken":true,"kind":"ServiceAccount","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:52Z","labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission","namespace":"ingress-nginx","resourceVersion":"617194","uid":"c02b3b94-f728-494d-a521-0a1a97fda43b"}}
+    creationTimestamp: "2025-07-20T15:23:52Z"
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission
+    namespace: ingress-nginx
+    resourceVersion: "631014"
+    uid: c02b3b94-f728-494d-a521-0a1a97fda43b
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:52Z","labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx","namespace":"ingress-nginx","resourceVersion":"617195","uid":"cea09742-4cf5-40bc-b8f8-86f8e2513480"},"rules":[{"apiGroups":[""],"resources":["namespaces"],"verbs":["get"]},{"apiGroups":[""],"resources":["configmaps","pods","secrets","endpoints"],"verbs":["get","list","watch"]},{"apiGroups":[""],"resources":["services"],"verbs":["get","list","watch"]},{"apiGroups":["networking.k8s.io"],"resources":["ingresses"],"verbs":["get","list","watch"]},{"apiGroups":["networking.k8s.io"],"resources":["ingresses/status"],"verbs":["update"]},{"apiGroups":["networking.k8s.io"],"resources":["ingressclasses"],"verbs":["get","list","watch"]},{"apiGroups":["coordination.k8s.io"],"resourceNames":["ingress-nginx-leader"],"resources":["leases"],"verbs":["get","update"]},{"apiGroups":["coordination.k8s.io"],"resources":["leases"],"verbs":["create"]},{"apiGroups":[""],"resources":["events"],"verbs":["create","patch"]},{"apiGroups":["discovery.k8s.io"],"resources":["endpointslices"],"verbs":["list","watch","get"]}]}
+    creationTimestamp: "2025-07-20T15:23:52Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx
+    namespace: ingress-nginx
+    resourceVersion: "631015"
+    uid: cea09742-4cf5-40bc-b8f8-86f8e2513480
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - namespaces
+    verbs:
+    - get
+  - apiGroups:
+    - ""
+    resources:
+    - configmaps
+    - pods
+    - secrets
+    - endpoints
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses/status
+    verbs:
+    - update
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingressclasses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - coordination.k8s.io
+    resourceNames:
+    - ingress-nginx-leader
+    resources:
+    - leases
+    verbs:
+    - get
+    - update
+  - apiGroups:
+    - coordination.k8s.io
+    resources:
+    - leases
+    verbs:
+    - create
+  - apiGroups:
+    - ""
+    resources:
+    - events
+    verbs:
+    - create
+    - patch
+  - apiGroups:
+    - discovery.k8s.io
+    resources:
+    - endpointslices
+    verbs:
+    - list
+    - watch
+    - get
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:52Z","labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission","namespace":"ingress-nginx","resourceVersion":"617196","uid":"95f29d7a-c9ec-4d21-ac9c-d88ff41720ce"},"rules":[{"apiGroups":[""],"resources":["secrets"],"verbs":["get","create"]}]}
+    creationTimestamp: "2025-07-20T15:23:52Z"
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission
+    namespace: ingress-nginx
+    resourceVersion: "631016"
+    uid: 95f29d7a-c9ec-4d21-ac9c-d88ff41720ce
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - get
+    - create
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T14:32:41Z","labels":{"app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx","resourceVersion":"631017","uid":"b5e08935-1ea7-4014-be59-486235cbf329"},"rules":[{"apiGroups":[""],"resources":["configmaps","endpoints","nodes","pods","secrets","namespaces"],"verbs":["list","watch"]},{"apiGroups":["coordination.k8s.io"],"resources":["leases"],"verbs":["list","watch"]},{"apiGroups":[""],"resources":["nodes"],"verbs":["get"]},{"apiGroups":[""],"resources":["services"],"verbs":["get","list","watch"]},{"apiGroups":["networking.k8s.io"],"resources":["ingresses"],"verbs":["get","list","watch"]},{"apiGroups":[""],"resources":["events"],"verbs":["create","patch"]},{"apiGroups":["networking.k8s.io"],"resources":["ingresses/status"],"verbs":["update"]},{"apiGroups":["networking.k8s.io"],"resources":["ingressclasses"],"verbs":["get","list","watch"]},{"apiGroups":["discovery.k8s.io"],"resources":["endpointslices"],"verbs":["list","watch","get"]}]}
+    creationTimestamp: "2025-07-20T14:32:41Z"
+    labels:
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx
+    resourceVersion: "631969"
+    uid: b5e08935-1ea7-4014-be59-486235cbf329
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - configmaps
+    - endpoints
+    - nodes
+    - pods
+    - secrets
+    - namespaces
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - coordination.k8s.io
+    resources:
+    - leases
+    verbs:
+    - list
+    - watch
+  - apiGroups:
+    - ""
+    resources:
+    - nodes
+    verbs:
+    - get
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - ""
+    resources:
+    - events
+    verbs:
+    - create
+    - patch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses/status
+    verbs:
+    - update
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingressclasses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - discovery.k8s.io
+    resources:
+    - endpointslices
+    verbs:
+    - list
+    - watch
+    - get
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T14:32:41Z","labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission","resourceVersion":"631018","uid":"218e0835-8bc7-4f75-b5c3-efe78031556c"},"rules":[{"apiGroups":["admissionregistration.k8s.io"],"resources":["validatingwebhookconfigurations"],"verbs":["get","update"]}]}
+    creationTimestamp: "2025-07-20T14:32:41Z"
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission
+    resourceVersion: "631970"
+    uid: 218e0835-8bc7-4f75-b5c3-efe78031556c
+  rules:
+  - apiGroups:
+    - admissionregistration.k8s.io
+    resources:
+    - validatingwebhookconfigurations
+    verbs:
+    - get
+    - update
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"RoleBinding","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:53Z","labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx","namespace":"ingress-nginx","resourceVersion":"617200","uid":"93fc2af9-4ca5-4aa1-b8e6-4c433d4e7a0f"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"Role","name":"ingress-nginx"},"subjects":[{"kind":"ServiceAccount","name":"ingress-nginx","namespace":"ingress-nginx"}]}
+    creationTimestamp: "2025-07-20T15:23:53Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx
+    namespace: ingress-nginx
+    resourceVersion: "631019"
+    uid: 93fc2af9-4ca5-4aa1-b8e6-4c433d4e7a0f
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: ingress-nginx
+  subjects:
+  - kind: ServiceAccount
+    name: ingress-nginx
+    namespace: ingress-nginx
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"RoleBinding","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:53Z","labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission","namespace":"ingress-nginx","resourceVersion":"617201","uid":"24a678a1-71f8-4557-852c-c566150c1f25"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"Role","name":"ingress-nginx-admission"},"subjects":[{"kind":"ServiceAccount","name":"ingress-nginx-admission","namespace":"ingress-nginx"}]}
+    creationTimestamp: "2025-07-20T15:23:53Z"
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission
+    namespace: ingress-nginx
+    resourceVersion: "631020"
+    uid: 24a678a1-71f8-4557-852c-c566150c1f25
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: ingress-nginx-admission
+  subjects:
+  - kind: ServiceAccount
+    name: ingress-nginx-admission
+    namespace: ingress-nginx
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T14:32:41Z","labels":{"app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx","resourceVersion":"631021","uid":"c3c55aa5-d2c8-4768-99fd-be14376e74d4"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"ingress-nginx"},"subjects":[{"kind":"ServiceAccount","name":"ingress-nginx","namespace":"cicd-project"}]}
+    creationTimestamp: "2025-07-20T14:32:41Z"
+    labels:
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx
+    resourceVersion: "631986"
+    uid: c3c55aa5-d2c8-4768-99fd-be14376e74d4
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: ingress-nginx
+  subjects:
+  - kind: ServiceAccount
+    name: ingress-nginx
+    namespace: cicd-project
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T14:32:41Z","labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission","resourceVersion":"631022","uid":"a81d84a3-6959-4bbe-9f69-534af2125cd0"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"ingress-nginx-admission"},"subjects":[{"kind":"ServiceAccount","name":"ingress-nginx-admission","namespace":"cicd-project"}]}
+    creationTimestamp: "2025-07-20T14:32:41Z"
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission
+    resourceVersion: "631987"
+    uid: a81d84a3-6959-4bbe-9f69-534af2125cd0
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: ingress-nginx-admission
+  subjects:
+  - kind: ServiceAccount
+    name: ingress-nginx-admission
+    namespace: cicd-project
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:53Z","labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-controller","namespace":"ingress-nginx","resourceVersion":"617205","uid":"f9008193-555e-42ce-8763-14ae87895e17"}}
+    creationTimestamp: "2025-07-20T15:23:53Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-controller
+    namespace: ingress-nginx
+    resourceVersion: "631023"
+    uid: f9008193-555e-42ce-8763-14ae87895e17
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:53Z","labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-controller","namespace":"ingress-nginx","resourceVersion":"617210","uid":"3e5b5bc7-166f-4b7e-afbe-696a5a8b67cf"},"spec":{"allocateLoadBalancerNodePorts":true,"clusterIP":"10.96.83.140","clusterIPs":["10.96.83.140"],"externalTrafficPolicy":"Local","healthCheckNodePort":31123,"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"appProtocol":"http","name":"http","nodePort":31918,"port":80,"protocol":"TCP","targetPort":"http"},{"appProtocol":"https","name":"https","nodePort":31564,"port":443,"protocol":"TCP","targetPort":"https"}],"selector":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":{}}}
+    creationTimestamp: "2025-07-20T15:23:53Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-controller
+    namespace: ingress-nginx
+    resourceVersion: "631024"
+    uid: 3e5b5bc7-166f-4b7e-afbe-696a5a8b67cf
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.96.83.140
+    clusterIPs:
+    - 10.96.83.140
+    externalTrafficPolicy: Local
+    healthCheckNodePort: 31123
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - appProtocol: http
+      name: http
+      nodePort: 31918
+      port: 80
+      protocol: TCP
+      targetPort: http
+    - appProtocol: https
+      name: https
+      nodePort: 31564
+      port: 443
+      protocol: TCP
+      targetPort: https
+    selector:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T15:23:53Z","labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-controller-admission","namespace":"ingress-nginx","resourceVersion":"617215","uid":"9b94f2f9-3cc1-4293-b5c5-05703bac4500"},"spec":{"clusterIP":"10.96.237.126","clusterIPs":["10.96.237.126"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"appProtocol":"https","name":"https-webhook","port":443,"protocol":"TCP","targetPort":"webhook"}],"selector":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx"},"sessionAffinity":"None","type":"ClusterIP"},"status":{"loadBalancer":{}}}
+    creationTimestamp: "2025-07-20T15:23:53Z"
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-controller-admission
+    namespace: ingress-nginx
+    resourceVersion: "631025"
+    uid: 9b94f2f9-3cc1-4293-b5c5-05703bac4500
+  spec:
+    clusterIP: 10.96.237.126
+    clusterIPs:
+    - 10.96.237.126
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - appProtocol: https
+      name: https-webhook
+      port: 443
+      protocol: TCP
+      targetPort: webhook
+    selector:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2025-07-20T15:23:53Z","generation":1,"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-controller","namespace":"ingress-nginx","resourceVersion":"618476","uid":"e53dfe09-7f34-4aa3-9909-58c50a2363e7"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":1},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"}},"spec":{"automountServiceAccountToken":true,"containers":[{"args":["/nginx-ingress-controller","--publish-service=$(POD_NAMESPACE)/ingress-nginx-controller","--election-id=ingress-nginx-leader","--controller-class=k8s.io/ingress-nginx","--ingress-class=nginx","--configmap=$(POD_NAMESPACE)/ingress-nginx-controller","--validating-webhook=:8443","--validating-webhook-certificate=/usr/local/certificates/cert","--validating-webhook-key=/usr/local/certificates/key"],"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"LD_PRELOAD","value":"/usr/local/lib/libmimalloc.so"}],"image":"registry.k8s.io/ingress-nginx/controller:v1.13.0@sha256:dc75a7baec7a3b827a5d7ab0acd10ab507904c7dad692365b3e3b596eca1afd2","imagePullPolicy":"IfNotPresent","lifecycle":{"preStop":{"exec":{"command":["/wait-shutdown"]}}},"livenessProbe":{"failureThreshold":5,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"controller","ports":[{"containerPort":80,"name":"http","protocol":"TCP"},{"containerPort":443,"name":"https","protocol":"TCP"},{"containerPort":8443,"name":"webhook","protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"resources":{"requests":{"cpu":"100m","memory":"90Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"add":["NET_BIND_SERVICE"],"drop":["ALL"]},"readOnlyRootFilesystem":false,"runAsGroup":82,"runAsNonRoot":true,"runAsUser":101,"seccompProfile":{"type":"RuntimeDefault"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/usr/local/certificates/","name":"webhook-cert","readOnly":true}]}],"dnsPolicy":"ClusterFirst","nodeSelector":{"kubernetes.io/os":"linux"},"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"ingress-nginx","serviceAccountName":"ingress-nginx","terminationGracePeriodSeconds":300,"volumes":[{"name":"webhook-cert","secret":{"defaultMode":420,"secretName":"ingress-nginx-admission"}}]}}},"status":{"conditions":[{"lastTransitionTime":"2025-07-20T15:23:53Z","lastUpdateTime":"2025-07-20T15:23:53Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"},{"lastTransitionTime":"2025-07-20T15:33:57Z","lastUpdateTime":"2025-07-20T15:33:57Z","message":"ReplicaSet \"ingress-nginx-controller-6b4d45d6f4\" has timed out progressing.","reason":"ProgressDeadlineExceeded","status":"False","type":"Progressing"}],"observedGeneration":1,"replicas":1,"unavailableReplicas":1,"updatedReplicas":1}}
+    creationTimestamp: "2025-07-20T15:23:53Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-controller
+    namespace: ingress-nginx
+    resourceVersion: "631038"
+    uid: e53dfe09-7f34-4aa3-9909-58c50a2363e7
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app.kubernetes.io/component: controller
+        app.kubernetes.io/instance: ingress-nginx
+        app.kubernetes.io/name: ingress-nginx
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 1
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: ingress-nginx
+          app.kubernetes.io/name: ingress-nginx
+          app.kubernetes.io/part-of: ingress-nginx
+          app.kubernetes.io/version: 1.13.0
+      spec:
+        automountServiceAccountToken: true
+        containers:
+        - args:
+          - /nginx-ingress-controller
+          - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller
+          - --election-id=ingress-nginx-leader
+          - --controller-class=k8s.io/ingress-nginx
+          - --ingress-class=nginx
+          - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
+          - --validating-webhook=:8443
+          - --validating-webhook-certificate=/usr/local/certificates/cert
+          - --validating-webhook-key=/usr/local/certificates/key
+          env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: LD_PRELOAD
+            value: /usr/local/lib/libmimalloc.so
+          image: registry.k8s.io/ingress-nginx/controller:v1.13.0@sha256:dc75a7baec7a3b827a5d7ab0acd10ab507904c7dad692365b3e3b596eca1afd2
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - /wait-shutdown
+          livenessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /healthz
+              port: 10254
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: controller
+          ports:
+          - containerPort: 80
+            name: http
+            protocol: TCP
+          - containerPort: 443
+            name: https
+            protocol: TCP
+          - containerPort: 8443
+            name: webhook
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 10254
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 90Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              add:
+              - NET_BIND_SERVICE
+              drop:
+              - ALL
+            readOnlyRootFilesystem: false
+            runAsGroup: 82
+            runAsNonRoot: true
+            runAsUser: 101
+            seccompProfile:
+              type: RuntimeDefault
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/local/certificates/
+            name: webhook-cert
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: ingress-nginx
+        serviceAccountName: ingress-nginx
+        terminationGracePeriodSeconds: 300
+        volumes:
+        - name: webhook-cert
+          secret:
+            defaultMode: 420
+            secretName: ingress-nginx-admission
+  status:
+    conditions:
+    - lastTransitionTime: "2025-07-20T15:23:53Z"
+      lastUpdateTime: "2025-07-20T15:23:53Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-07-20T15:33:57Z"
+      lastUpdateTime: "2025-07-20T15:33:57Z"
+      message: ReplicaSet "ingress-nginx-controller-6b4d45d6f4" has timed out progressing.
+      reason: ProgressDeadlineExceeded
+      status: "False"
+      type: Progressing
+    observedGeneration: 2
+    replicas: 1
+    unavailableReplicas: 1
+    updatedReplicas: 1
+- apiVersion: batch/v1
+  kind: Job
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission-create","namespace":"ingress-nginx"},"spec":{"template":{"metadata":{"labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission-create"},"spec":{"automountServiceAccountToken":true,"containers":[{"args":["create","--host=ingress-nginx-controller-admission,ingress-nginx-controller-admission.$(POD_NAMESPACE).svc","--namespace=$(POD_NAMESPACE)","--secret-name=ingress-nginx-admission"],"env":[{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}}],"image":"registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.0@sha256:c9f76a75fd00e975416ea1b73300efd413116de0de8570346ed90766c5b5cefb","imagePullPolicy":"IfNotPresent","name":"create","securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsGroup":65532,"runAsNonRoot":true,"runAsUser":65532,"seccompProfile":{"type":"RuntimeDefault"}}}],"nodeSelector":{"kubernetes.io/os":"linux"},"restartPolicy":"OnFailure","serviceAccountName":"ingress-nginx-admission"}},"ttlSecondsAfterFinished":0}}
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission-create
+    namespace: ingress-nginx
+  spec:
+    template:
+      metadata:
+        labels:
+          app.kubernetes.io/component: admission-webhook
+          app.kubernetes.io/instance: ingress-nginx
+          app.kubernetes.io/name: ingress-nginx
+          app.kubernetes.io/part-of: ingress-nginx
+          app.kubernetes.io/version: 1.13.0
+        name: ingress-nginx-admission-create
+      spec:
+        automountServiceAccountToken: true
+        containers:
+        - args:
+          - create
+          - --host=ingress-nginx-controller-admission,ingress-nginx-controller-admission.$(POD_NAMESPACE).svc
+          - --namespace=$(POD_NAMESPACE)
+          - --secret-name=ingress-nginx-admission
+          env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          image: registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.0@sha256:c9f76a75fd00e975416ea1b73300efd413116de0de8570346ed90766c5b5cefb
+          imagePullPolicy: IfNotPresent
+          name: create
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+            seccompProfile:
+              type: RuntimeDefault
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: OnFailure
+        serviceAccountName: ingress-nginx-admission
+    ttlSecondsAfterFinished: 0
+- apiVersion: batch/v1
+  kind: Job
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission-patch","namespace":"ingress-nginx"},"spec":{"template":{"metadata":{"labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission-patch"},"spec":{"automountServiceAccountToken":true,"containers":[{"args":["patch","--webhook-name=ingress-nginx-admission","--namespace=$(POD_NAMESPACE)","--patch-mutating=false","--secret-name=ingress-nginx-admission","--patch-failure-policy=Fail"],"env":[{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"fieldPath":"metadata.namespace"}}}],"image":"registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.0@sha256:c9f76a75fd00e975416ea1b73300efd413116de0de8570346ed90766c5b5cefb","imagePullPolicy":"IfNotPresent","name":"patch","securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsGroup":65532,"runAsNonRoot":true,"runAsUser":65532,"seccompProfile":{"type":"RuntimeDefault"}}}],"nodeSelector":{"kubernetes.io/os":"linux"},"restartPolicy":"OnFailure","serviceAccountName":"ingress-nginx-admission"}},"ttlSecondsAfterFinished":0}}
+    creationTimestamp: "2025-07-20T17:53:17Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission-patch
+    namespace: ingress-nginx
+    resourceVersion: "631036"
+    uid: 0071d591-b49d-4fe5-9fc8-0fcb21789e10
+  spec:
+    backoffLimit: 6
+    completionMode: NonIndexed
+    completions: 1
+    manualSelector: false
+    parallelism: 1
+    podReplacementPolicy: TerminatingOrFailed
+    selector:
+      matchLabels:
+        batch.kubernetes.io/controller-uid: 0071d591-b49d-4fe5-9fc8-0fcb21789e10
+    suspend: false
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: admission-webhook
+          app.kubernetes.io/instance: ingress-nginx
+          app.kubernetes.io/name: ingress-nginx
+          app.kubernetes.io/part-of: ingress-nginx
+          app.kubernetes.io/version: 1.13.0
+          batch.kubernetes.io/controller-uid: 0071d591-b49d-4fe5-9fc8-0fcb21789e10
+          batch.kubernetes.io/job-name: ingress-nginx-admission-patch
+          controller-uid: 0071d591-b49d-4fe5-9fc8-0fcb21789e10
+          job-name: ingress-nginx-admission-patch
+        name: ingress-nginx-admission-patch
+      spec:
+        automountServiceAccountToken: true
+        containers:
+        - args:
+          - patch
+          - --webhook-name=ingress-nginx-admission
+          - --namespace=$(POD_NAMESPACE)
+          - --patch-mutating=false
+          - --secret-name=ingress-nginx-admission
+          - --patch-failure-policy=Fail
+          env:
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          image: registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.0@sha256:c9f76a75fd00e975416ea1b73300efd413116de0de8570346ed90766c5b5cefb
+          imagePullPolicy: IfNotPresent
+          name: patch
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+            seccompProfile:
+              type: RuntimeDefault
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          kubernetes.io/os: linux
+        restartPolicy: OnFailure
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: ingress-nginx-admission
+        serviceAccountName: ingress-nginx-admission
+        terminationGracePeriodSeconds: 30
+    ttlSecondsAfterFinished: 0
+  status:
+    active: 1
+    ready: 0
+    startTime: "2025-07-20T17:53:17Z"
+    terminating: 0
+    uncountedTerminatedPods: {}
+- apiVersion: networking.k8s.io/v1
+  kind: IngressClass
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"IngressClass","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T14:32:42Z","generation":1,"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"nginx","resourceVersion":"631037","uid":"b4bb7953-9487-4109-b1a4-0f4938e40730"},"spec":{"controller":"k8s.io/ingress-nginx"}}
+    creationTimestamp: "2025-07-20T14:32:42Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: nginx
+    resourceVersion: "632023"
+    uid: b4bb7953-9487-4109-b1a4-0f4938e40730
+  spec:
+    controller: k8s.io/ingress-nginx
+- apiVersion: admissionregistration.k8s.io/v1
+  kind: ValidatingWebhookConfiguration
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"admissionregistration.k8s.io/v1","kind":"ValidatingWebhookConfiguration","metadata":{"annotations":{},"creationTimestamp":"2025-07-20T17:53:17Z","generation":1,"labels":{"app.kubernetes.io/component":"admission-webhook","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.13.0"},"name":"ingress-nginx-admission","resourceVersion":"631043","uid":"d52d9700-8e4f-4499-a838-18b699068db3"},"webhooks":[{"admissionReviewVersions":["v1"],"clientConfig":{"service":{"name":"ingress-nginx-controller-admission","namespace":"cicd-project","path":"/networking/v1/ingresses","port":443}},"failurePolicy":"Fail","matchPolicy":"Equivalent","name":"validate.nginx.ingress.kubernetes.io","namespaceSelector":{},"objectSelector":{},"rules":[{"apiGroups":["networking.k8s.io"],"apiVersions":["v1"],"operations":["CREATE","UPDATE"],"resources":["ingresses"],"scope":"*"}],"sideEffects":"None","timeoutSeconds":10}]}
+    creationTimestamp: "2025-07-20T17:53:17Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/component: admission-webhook
+      app.kubernetes.io/instance: ingress-nginx
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+      app.kubernetes.io/version: 1.13.0
+    name: ingress-nginx-admission
+    resourceVersion: "632026"
+    uid: d52d9700-8e4f-4499-a838-18b699068db3
+  webhooks:
+  - admissionReviewVersions:
+    - v1
+    clientConfig:
+      service:
+        name: ingress-nginx-controller-admission
+        namespace: cicd-project
+        path: /networking/v1/ingresses
+        port: 443
+    failurePolicy: Fail
+    matchPolicy: Equivalent
+    name: validate.nginx.ingress.kubernetes.io
+    namespaceSelector: {}
+    objectSelector: {}
+    rules:
+    - apiGroups:
+      - networking.k8s.io
+      apiVersions:
+      - v1
+      operations:
+      - CREATE
+      - UPDATE
+      resources:
+      - ingresses
+      scope: '*'
+    sideEffects: None
+    timeoutSeconds: 10
+kind: List
+metadata: {}
