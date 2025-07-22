@@ -30,7 +30,6 @@ metadata:
   name: my-service
   namespace: cicd-project
 spec:
-  type: LoadBalancer
   selector:
     app: cicd
   ports:
