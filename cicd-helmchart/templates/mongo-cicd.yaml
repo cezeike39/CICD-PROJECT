@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.volumes.name }}
+  labels:
+    app: {{ .Values.volumes.app }}
+spec:
+  replicas: {{ .Values.volumes.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.volumes.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.volumes.app }}
+    spec:
+      containers:
+      - name: {{ .Values.volumes.app}}
+        image: {{ .Values.volumes.image }}
+        ports:
+        - containerPort: {{ .Values.volumes.service.port }}
+        envFrom:
+        - secretRef:
+            name: my-secret
+        volumeMounts:
+        - name: mongo-storage
+          mountPath: /data/db
+      volumes:
+      - name: mongo-storage
+        hostPath:
+          path: /tmp/mongo-data
+          type: DirectoryOrCreate
