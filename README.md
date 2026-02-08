@@ -117,7 +117,7 @@ This project now supports **deployment using Helm** for easier management of Kub
 
 1. Install the release:
 
-```bash
+```
 helm install <name>  cicd-helmchart 
 ```
 ### Local Deployment with Docker Compose
@@ -128,15 +128,15 @@ Start the services
 
 From the root of the project (where docker-compose.yml is located):
 
-```bash
+```
 docker-compose up -d
 ```
 ### Verify the containers
 
-```bash
+```
 docker-compose ps
 ```
 ### Stop the services
-```bash
+```
 docker-compose down -d
 ```
