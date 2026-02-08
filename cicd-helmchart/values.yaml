@@ -1,0 +1,37 @@
+
+replicaCount: 1
+name: cicd-helmchart
+namespace: cicd-project
+image:
+  repository: cezeike39/docker:cicd
+  pullPolicy: IfNotPresent
+labels:
+  app: cicd-helmchart
+service:
+  type: NodePort
+  port: 8080
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 50
+---
+volumes: 
+  image: mongo
+  replicaCount: 1
+  name: mongo-deployment
+  app: mongo
+  service:
+    name: mongo-service
+    type: NodePort
+    port: 27017

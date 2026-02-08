@@ -34,6 +34,7 @@ The pipeline handles:
 | **Nexus**    | Artifact repository for `.jar` files |
 | **Kubernetes (Kops)** | Cluster creation & deployment |
 | **kubectl**  | K8s management CLI                   |
+| **Helm**     | K8s Package manager                  | 
 
 ---
 
@@ -95,3 +96,47 @@ You can view the service using:
 
 ```bash
 kubectl get svc
+```
+
+## ⛵ Helm Deployment
+
+This project now supports **deployment using Helm** for easier management of Kubernetes resources.
+
+- The Helm chart is located in `cicd-helmchart/`.
+- It deploys:
+  - The Java application (`cicd-helmchart` deployment)
+  - MongoDB (`mongo-deployment`)
+  - ConfigMaps and Secrets
+  - Horizontal Pod Autoscaler (HPA)
+- The Helm chart handles:
+  - Labels, annotations, and namespaces
+  - Service exposure via **NodePort** or **LoadBalancer**
+---
+
+### Deploying via Helm
+
+1. Install the release:
+
+```
+helm install <name>  cicd-helmchart 
+```
+### Local Deployment with Docker Compose
+
+For local development or testing, you can use Docker Compose to run the Java application and MongoDB without a Kubernetes cluster.
+
+Start the services
+
+From the root of the project (where docker-compose.yml is located):
+
+```
+docker-compose up -d
+```
+### Verify the containers
+
+```
+docker-compose ps
+```
+### Stop the services
+```
+docker-compose down -d
+```
