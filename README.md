@@ -96,6 +96,7 @@ You can view the service using:
 
 ```bash
 kubectl get svc
+```
 
 ## ⛵ Helm Deployment
 
@@ -110,6 +111,7 @@ This project now supports **deployment using Helm** for easier management of Kub
 - The Helm chart handles:
   - Labels, annotations, and namespaces
   - Service exposure via **NodePort** or **LoadBalancer**
+---
 
 ### Deploying via Helm
 
@@ -117,7 +119,7 @@ This project now supports **deployment using Helm** for easier management of Kub
 
 ```bash
 helm install <name>  cicd-helmchart 
-
+```
 ### Local Deployment with Docker Compose
 
 For local development or testing, you can use Docker Compose to run the Java application and MongoDB without a Kubernetes cluster.
@@ -128,13 +130,13 @@ From the root of the project (where docker-compose.yml is located):
 
 ```bash
 docker-compose up -d
-
+```
 ### Verify the containers
 
 ```bash
 docker-compose ps
-
+```
 ### Stop the services
 ```bash
 docker-compose down -d
-
+```
